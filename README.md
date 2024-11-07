@@ -7,16 +7,14 @@ Projet de session - Sujet : Gestion du centre d'escalade Bloc 9.81
 ## Tables et Structures de Données
 
 ### 1. **Clients**
-- **Champs** : 
   - ID
   - IDPersonne
   - ClientEstActif
-  - NumeroCarteBancaire
+  - **NumeroCarteBancaire**
   - Email
   - IDParcoursEnCours
 
 ### 2. **Personnes**
-- **Champs** : 
   - ID
   - Nom
   - Prenom
@@ -28,22 +26,19 @@ Projet de session - Sujet : Gestion du centre d'escalade Bloc 9.81
   - IDPersonne
   - DateEngagement
   - TauxHoraire
-  - NumeroCompteBancaire
+  - **NumeroCompteBancaire**
 
 ### 4. **Payes**
-- **Champs** : 
   - ID
   - IDTransaction
   - EmployeeID
 
 ### 5. **Transactions**
-- **Champs** : 
   - ID
-  - MontantTransaction
-  - Date
+  - **MontantTransaction**
+  - DateTransaction
 
 ### 6. **Visites**
-- **Champs** : 
   - ID
   - IDClient
   - HeureEntree
@@ -51,7 +46,6 @@ Projet de session - Sujet : Gestion du centre d'escalade Bloc 9.81
   - IDTransaction
 
 ### 7. **Parcours**
-- **Champs** : 
   - ID
   - NomDuParcours
   - NiveauDifficulte
@@ -59,7 +53,7 @@ Projet de session - Sujet : Gestion du centre d'escalade Bloc 9.81
   - EstInstalle
 
 ### Données sensibles et encryptées/chiffrées :
-- **Souligné** = Donnée sensible ET encryptée/chiffrée.
+- **Italique gras** = Donnée sensible ET encryptée/chiffrée.
 
 ---
 
