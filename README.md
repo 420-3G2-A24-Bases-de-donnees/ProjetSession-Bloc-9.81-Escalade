@@ -21,7 +21,6 @@ Projet de session - Sujet : Gestion du centre d'escalade Bloc 9.81
   - DateNaissance
 
 ### 3. **Employees**
-- **Champs** : 
   - ID
   - IDPersonne
   - DateEngagement
@@ -53,12 +52,11 @@ Projet de session - Sujet : Gestion du centre d'escalade Bloc 9.81
   - EstInstalle
 
 ### Données sensibles et encryptées/chiffrées :
-- **Italique gras** = Donnée sensible ET encryptée/chiffrée.
+**Italique gras** = Donnée sensible ET encryptée/chiffrée.
 
 ---
 
 ## Division des Tâches
-
 - **Ben**  
 - **Marc**
 
