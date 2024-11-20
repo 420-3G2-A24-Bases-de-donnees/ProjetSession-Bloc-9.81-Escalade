@@ -13,7 +13,7 @@ CREATE TABLE Clients(
 	PersonneID int NOT NULL,
 		-- (Oui ou Non?)
 	ClientEstActif bit NULL DEFAULT 1,
-		--Nombre de numéro dans une carte? + Parler avec la prof pour NULL ou NOT NULL.
+		--Nombre de numéro dans une carte? + Parler avec la prof pour NULL ou NOT NULL. + DOIT ÊTRE CHIFFRER
 	NumeroCarteBancaire nvarchar(16) NOT NULL,
 	Email nvarchar(50) NOT NULL,
 		--Je dois tu l'appeler IDParcour ou IDParcourEnCours
@@ -27,7 +27,10 @@ CREATE TABLE Clients(
 		REFERENCES "dbo"."Clients" ("ClientID"),
 	CONSTRAINT "FK_Clients_Personnes"
 		FOREIGN KEY ("PersonneID")
-		REFERENCES "dbo"."Clients" ("ClientID")
+		REFERENCES "dbo"."Clients" ("ClientID"),
+	--Vérification pour que l'addresse courriel soit valide
+	CONSTRAINT "CK_Email"
+		CHECK (Email LIKE '%@%')
 	)
 
 --Création de la table "Personnes"
@@ -50,6 +53,7 @@ CREATE TABLE Personnes(
 --Création de la table "Transactions"
 CREATE TABLE Transactions(
 	transactionID int IDENTITY (1,1) NOT NULL,
+	-- DOIT ÊTRE CHIFFRER
 	MontantTransaction decimal NOT NULL,
 	DateTransaction datetime NULL,
 	--Création de la clé primaire
@@ -70,4 +74,5 @@ CREATE TABLE Parcours(
 	--Création de la clé primaire
 	CONSTRAINT "PK_Parcours"
 		PRIMARY KEY CLUSTERED ("ParcoursID")
+	--Validation pour que le niveau de difficulte ne soit pas négatiff ???
 	)
