@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS Employees
 CREATE TABLE Employees(
 	EmployeeID int IDENTITY(1,1) NOT NULL,
 	PersonneID int NOT NULL,
-	DateEngagement datetime NULL,
+	DateEngagement datetime2 NULL,
 	TauxHoraire decimal NULL,
 	NumeroCompteBancaire nvarchar(20) NULL,
 
@@ -83,12 +83,9 @@ CREATE TABLE Clients(
 	--Création des colonnes
 	ClientID int IDENTITY (1,1) NOT NULL,
 	PersonneID int NOT NULL,
-		-- (Oui ou Non?)
 	ClientEstActif bit NULL DEFAULT 1,
-		--Nombre de numéro dans une carte? + Parler avec la prof pour NULL ou NOT NULL. + DOIT ÊTRE CHIFFRER
 	NumeroCarteBancaire nvarchar(16) NOT NULL,
 	Email nvarchar(50) NOT NULL,
-		--Je dois tu l'appeler IDParcour ou IDParcourEnCours
 	ParcoursEnCours int NULL,
 	--Création de la clé primaire
 	CONSTRAINT "PK_Clients"
@@ -102,7 +99,7 @@ CREATE TABLE Clients(
 		REFERENCES "dbo"."Personnes" ("PersonneID"),
 	--Vérification pour que l'addresse courriel soit valide
 	CONSTRAINT "CK_Email"
-		CHECK (Email LIKE '%@%')
+		CHECK (Email LIKE '[a-Z0-9-_]%@[a-Z0-9-_]%.[a-Z]%')
 )
 
 --7
@@ -114,7 +111,7 @@ CREATE TABLE Transactions(
 	transactionID int IDENTITY (1,1) NOT NULL,
 	-- DOIT ÊTRE CHIFFRER
 	MontantTransaction decimal NOT NULL,
-	DateTransaction datetime NULL,
+	DateTransaction datetime2 NULL,
 	--Création de la clé primaire
 	CONSTRAINT "PK_Transactions"
 		PRIMARY KEY CLUSTERED ("TransactionID")
@@ -148,8 +145,8 @@ DROP TABLE IF EXISTS Visites
 CREATE TABLE Visites(
 	VisiteID int IDENTITY(1,1) NOT NULL,
 	ClientID int NOT NULL,
-	HeureEntree datetime NOT NULL,
-	HeureSortie datetime NOT NULL,
+	HeureEntree datetime2 NOT NULL,
+	HeureSortie datetime2 NOT NULL,
 	TransactionID int NOT NULL,
 
 	CONSTRAINT "PK_Visites"
