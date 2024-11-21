@@ -18,7 +18,7 @@ CREATE TABLE Employees(
 		REFERENCES "dbo"."Personnes" ("PersonneID"),
 
 	CONSTRAINT "CK_DateEngagement"
-		CHECK (DateEngagement BETWEEN '07-10-2020' AND GETDATE()),
+		CHECK (DateEngagement BETWEEN 07-10-2020 AND GETDATE()),
 
 	CONSTRAINT "CK_NumeroCompteBancaire"  
 		CHECK (NumeroCompteBancaire LIKE '[0-9]{5}-[0-9]{2}-[0-9]{5}')
