@@ -99,7 +99,7 @@ CREATE TABLE Clients(
 		REFERENCES "dbo"."Personnes" ("PersonneID"),
 	--Vérification pour que l'addresse courriel soit valide
 	CONSTRAINT "CK_Email"
-		CHECK (Email LIKE '[a-Z0-9-_]%@[a-Z0-9-_]%.[a-Z]%')
+		CHECK (Email LIKE '[a-Z0-9-_.]%@[a-Z0-9-_]%.[a-Z]%')
 )
 
 --7
