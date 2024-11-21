@@ -55,3 +55,22 @@
 --la valeur NiveauDifficulte ne peut pas être négatif
 --la valeur TypeDeParcours doit être un de ces choix [Bouldering, Dino, Crimp, Stab, Dynamique, Statique]
 
+
+
+--Donne moi 300 script qui seed dans cette base de données(INSRT TO), donne moi 300 données de 'Visites' pour cette base de donnée:
+
+	--VisiteID int IDENTITY(1,1) NOT NULL,
+	--ClientID int NOT NULL,
+	--HeureEntree datetime2 NOT NULL,
+	--HeureSortie datetime2 NOT NULL,
+	--TransactionID int NOT NULL
+
+--le format de HeureEntree : xxxx-xx-xx-xx-xx-xx (ou x = n'importe quel chiffre)
+--le format de HaureSortie : xxxx-xx-xx-xx-xx-xx (ou x = n'importe quel chiffre)
+--l'HeureEntree ne peut pas être plus petit que xxxx-xx-xx-08-00-00 (ou x = n'importe quel chiffre)
+--l'HeureSortie ne peut pas être plus grand que xxxx-xx-xx-23-00-00 (ou x = n'importe quel chiffre)
+--l'HeureEntree ne peut pas être plus petit que 2019-10-07-xx-xx-xx (ou x = n'importe quel chiffre)
+--l'HeureEntree ne peut pas être plus grand que 2024-11-21-xx-xx-xx (ou x = n'importe quel chiffre)
+--le TransactionID doit commencer a 1
+--les HeureEntree et HeureSortie ne sont pas obligé de se suivre, tout en suivant les demandes de tantôt
+--le ClientID doit être entre 1 et 98 et il peut ce repéter
