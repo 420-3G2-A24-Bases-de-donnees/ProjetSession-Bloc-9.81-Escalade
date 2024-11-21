@@ -29,7 +29,7 @@ DROP TABLE IF EXISTS Payes
 
 CREATE TABLE Payes(
 	PayeID int IDENTITY(1,1) NOT NULL,
-	TransactionID decimal NOT NULL,
+	TransactionID int NOT NULL,
 	EmployeeID int NOT NULL,
 
 	CONSTRAINT "PK_Payes"
@@ -52,7 +52,7 @@ CREATE TABLE Visites(
 	ClientID int NOT NULL,
 	HeureEntree datetime NULL, -- À Vérifier
 	HeureSortie datetime NULL, -- À Vérifier
-	TransactionID decimal NULL, -- À Vérifier
+	TransactionID int NULL, -- À Vérifier
 
 	CONSTRAINT "PK_Visites"
 		PRIMARY KEY CLUSTERED ("VisiteID"),
