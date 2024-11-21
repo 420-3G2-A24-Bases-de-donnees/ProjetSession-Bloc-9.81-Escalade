@@ -18,7 +18,7 @@ CREATE TABLE Personnes(
 	PersonneID int IDENTITY (1,1) NOT NULL,
 	Nom nvarchar(20) NOT NULL,
 	Prenom nvarchar(20) NOT NULL,
-	DateNaissance datetime NULL,
+	DateNaissance datetime2 NULL,
 	--Création de la clé primaire
 	CONSTRAINT "PK_Personnes"
 		PRIMARY KEY CLUSTERED ("PersonneID"),
@@ -47,7 +47,7 @@ CREATE TABLE Employees(
 		REFERENCES "dbo"."Personnes" ("PersonneID"),
 
 	CONSTRAINT "CK_DateEngagement"
-		CHECK (DateEngagement BETWEEN 2025-11-21 AND 2019-10-07),
+		CHECK (DateEngagement BETWEEN 2019-10-07-00-00-00 AND 2025-11-21-00-00-00),
 
 	CONSTRAINT "CK_NumeroCompteBancaire"  
 		CHECK (NumeroCompteBancaire LIKE '[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]')

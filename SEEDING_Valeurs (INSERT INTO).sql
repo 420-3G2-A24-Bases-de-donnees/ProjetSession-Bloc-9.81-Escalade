@@ -189,7 +189,7 @@ VALUES
 SELECT * FROM Personnes
 INSERT INTO Employees (PersonneID, DateEngagement, TauxHoraire, NumeroCompteBancaire)
 VALUES
-( 99, 2020-01-16, 19.50, '52756-07-21214'), 
+( 99, 2020-01-16-00-00-00, 19.50, '52756-07-21214'), 
 (100, 2020-01-15, 15.50, '12345-67-89012'),
 (101, 2020-04-20, 18.75, '23456-78-90123'),
 (102, 2020-08-13, 20.00, '34567-89-01234'),
@@ -456,9 +456,9 @@ VALUES
 
 
 -- INSERTION Dans Transactions (130 Transactions)
-
+SELECT * FROm Transactions
 INSERT INTO Transactions (MontantTransaction, DateTransaction) VALUES
-(150.75, 2024-11-19-14-30-00),
+(150.75, 2023-11-19-14-30-00),
 (220.50, 2024-11-18-09-00-00),
 (85.20, NULL),
 (60.10, 2024-11-17-11-45-00),
