@@ -3,7 +3,7 @@
 --Clients (Clés symétriques) "CHIFFREMENT"
 
 ALTER TABLE Clients
-ADD NumeroCarteBancaire VARBINARY(256)
+ALTER COLUMN CONVERT(nvarchar(16), NumeroCarteBancaire) VARBINARY
 
 CREATE ASYMMETRIC KEY ClientsKeK WITH ALGORITHM = RSA_4096
 
