@@ -47,7 +47,7 @@ CREATE TABLE Employees(
 		REFERENCES "dbo"."Personnes" ("PersonneID"),
 
 	CONSTRAINT "CK_DateEngagement"
-		CHECK (DateEngagement BETWEEN 2019-10-07-00-00-00 AND 2025-11-21-00-00-00),
+		CHECK (DateEngagement BETWEEN '2019-10-07' AND GETDATE()),
 
 	CONSTRAINT "CK_NumeroCompteBancaire"  
 		CHECK (NumeroCompteBancaire LIKE '[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]')
@@ -61,10 +61,10 @@ DROP TABLE IF EXISTS Parcours
 CREATE TABLE Parcours(
 	--Créations des colonnes
 	ParcoursID int IDENTITY (1,1) NOT NULL,
-	NomDuParcours nvarchar(20) NOT NULL,
+	NomDuParcours nvarchar(100) NOT NULL,
 	NiveauDifficulte int NULL,
 		--On le met tu NULL, parce ce qu'on va set les types de parcours?
-	TypeDeParcours nvarchar(10) NOT NULL,
+	TypeDeParcours nvarchar(100) NOT NULL,
 		--NULL pour le oui ou non
 	EstInstalle bit NULL DEFAULT 1,
 	--Création de la clé primaire
@@ -124,6 +124,8 @@ DROP TABLE IF EXISTS Payes
 CREATE TABLE Payes(
 	PayeID int IDENTITY(1,1) NOT NULL,
 	TransactionID int NOT NULL,
+	
+	-- POBAblement qu'il faudrait mettre UNIQUE sur le transactionID
 	EmployeeID int NOT NULL,
 
 	CONSTRAINT "PK_Payes"
