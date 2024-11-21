@@ -47,10 +47,10 @@ CREATE TABLE Employees(
 		REFERENCES "dbo"."Personnes" ("PersonneID"),
 
 	CONSTRAINT "CK_DateEngagement"
-		CHECK (DateEngagement BETWEEN '07-10-2020' AND GETDATE()),
+		CHECK (DateEngagement BETWEEN 2025-11-21 AND 2019-10-07),
 
 	CONSTRAINT "CK_NumeroCompteBancaire"  
-		CHECK (NumeroCompteBancaire LIKE '[0-9]{5}-[0-9]{2}-[0-9]{5}')
+		CHECK (NumeroCompteBancaire LIKE '[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]')
 )
 
 --5
@@ -75,7 +75,6 @@ CREATE TABLE Parcours(
 
 --6
 
-DROP TABLE IF EXISTS Transactions
 
 DROP TABLE IF EXISTS Clients
 
@@ -97,10 +96,10 @@ CREATE TABLE Clients(
 	--Création des clés étrangère
 	CONSTRAINT "FK_Clients_Parcours"
 		FOREIGN KEY ("ParcoursEnCours")
-		REFERENCES "dbo"."Clients" ("ClientID"),
+		REFERENCES "dbo"."Parcours" ("ParcoursID"),
 	CONSTRAINT "FK_Clients_Personnes"
 		FOREIGN KEY ("PersonneID")
-		REFERENCES "dbo"."Clients" ("ClientID"),
+		REFERENCES "dbo"."Personnes" ("PersonneID"),
 	--Vérification pour que l'addresse courriel soit valide
 	CONSTRAINT "CK_Email"
 		CHECK (Email LIKE '%@%')
@@ -149,9 +148,9 @@ DROP TABLE IF EXISTS Visites
 CREATE TABLE Visites(
 	VisiteID int IDENTITY(1,1) NOT NULL,
 	ClientID int NOT NULL,
-	HeureEntree datetime NULL, -- À Vérifier
-	HeureSortie datetime NULL, -- À Vérifier
-	TransactionID int NULL, -- À Vérifier
+	HeureEntree datetime NOT NULL,
+	HeureSortie datetime NOT NULL,
+	TransactionID int NOT NULL,
 
 	CONSTRAINT "PK_Visites"
 		PRIMARY KEY CLUSTERED ("VisiteID"),
