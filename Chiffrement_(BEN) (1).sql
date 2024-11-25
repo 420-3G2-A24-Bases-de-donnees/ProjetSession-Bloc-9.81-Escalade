@@ -1,25 +1,24 @@
 --Chiffrement "Clients"(NumeroCarteBancaire) + "Transactions"(MontantTransaction)
 
+
+
 --Clients (Clés symétriques) "CHIFFREMENT"
 
+
+
 ALTER TABLE Clients
-ALTER COLUMN NumeroCarteBancaire) VARBINARY
+ALTER COLUMN NumeroCarteBancaire VARBINARY(256)
 
-CREATE ASYMMETRIC KEY ClientsKeK WITH ALGORITHM = RSA_4096
+CREATE ASYMMETRIC KEY ClientKEK WITH ALGORITHM = RSA_2048
 
-CREATE SYMMETRIC KEY ClientsKey WITH ALGORITHM = AES_192
-ENCRYPTION BY ASYMMETRIC KEY ClientsKek
-
-OPEN SYMMETRIC KEY ClientsKey DDECRYPTION BY ASYMMETRIC KEY ClientsKeK;
-
-INSERT INTO Clients (ClientID, NumeroCarteBancaire)
-VALUES (1, ENCRYPTBYKEY(KEY_GUID('ClientsKey'), '1234-5678-9012-3456', 1, 'salt'))
-
-CLOSE SYSMMETRIC KEY ClientsKey
+CREATE SYMMETRIC KEY ClientKey WITH ALGORITHM = AES_256
+ENCRYPTION BY ASYMMETRIC KEY ClientKEK
 
 
 
---Clients (Clés asymétriques) "DÉCHIFFREMENT"
+
+
+--Clients (Clés symétriques) "DÉCHIFFREMENT"
 
 
 
