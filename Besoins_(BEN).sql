@@ -11,14 +11,22 @@ ON Clients.PersonneID = Personnes.PersonneID
 WHERE ClientEstActif = 0
 
 --Deuxième besoin
-/* Le gérant peut ajouter un employee dans la table "Employees"*/
+/* L'employer peut afficher les infos des parcours installer*/
+-- Changer les NULL pour zero
+
+SELECT NomDuParcours, NiveauDifficulte, TypeDeParcours FROM Parcours
+WHERE EstInstalle = 1
+ORDER BY NiveauDifficulte
 
 
 --Troisième besoin
-/*Les employees peuvent enregistrer un nouveau client dans la table  "Clients"*/
+/*Le gérant peuvent afficher les info important des employers selon leur ancientés*/
+SELECT Prenom + ' ' + nom AS [Nom employee], FORMAT(DateEngagement, 'yyyy-MM-dd') AS [Date d'engagement], TauxHoraire FROM Employees INNER JOIN Personnes
+ON Employees.PersonneID = Personnes.PersonneID
+ORDER BY [Date d'engagement]
 
 --Quatrième besoin
-/*Les employees peuvent enregistrer une visite d'un client dans la table "Visites"*/
+/*Le DB administrateur peut voir le profit fait selon les journée*/
 
 --Cinquième besoin
 /*Le gérant peut changer le taux d'horaire d'un employee*/
