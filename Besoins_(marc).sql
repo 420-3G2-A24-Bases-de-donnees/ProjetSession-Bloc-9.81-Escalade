@@ -5,7 +5,14 @@
 --Deuxième besoin (Fonction ET Vue)
 /*Le gérant peut obtenir les profits du centre*/ 
 
-CREATE OR ALTER FUNCTION fnCalculer les 
+CREATE OR ALTER FUNCTION fnCalculerProfitMensuel(@mois int)
+RETURNS @ProfitMensuel TABLE (Mois int, Profit decimal)
+AS
+BEGIN;
+	INSERT INTO @ProfitMensuel (Mois, Profit)
+	SELECT DATEPART(MONTH, Transactions
+
+
 
 -- Troisième besoin
 /*Les ressources humaines peuvent créer des payes*/
