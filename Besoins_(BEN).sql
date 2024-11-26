@@ -2,11 +2,11 @@ USE [Bloc_9.81]
 GO
 --Premier besoin
 /* Les employees peuvent afficher le nombre de Clients actif "ClientsEstActif" = 1 ou "ClientsEstActif" = 0*/
-SELECT Prenom, Nom, DateNaissance, Email FROM Clients INNER JOIN Personnes
+SELECT Prenom, Nom, FORMAT(DateNaissance, 'yyyy-MM-dd') AS [Date de naissance], Email, ParcoursEnCours FROM Clients INNER JOIN Personnes
 ON Clients.PersonneID = Personnes.PersonneID
 WHERE ClientEstActif = 1
 
-SELECT Prenom, Nom, DateNaissance, Email FROM Clients INNER JOIN Personnes
+SELECT Prenom, Nom, FORMAT(DateNaissance, 'yyyy-MM-dd') AS [Date de naissance], Email FROM Clients INNER JOIN Personnes
 ON Clients.PersonneID = Personnes.PersonneID
 WHERE ClientEstActif = 0
 
@@ -26,7 +26,10 @@ ON Employees.PersonneID = Personnes.PersonneID
 ORDER BY [Date d'engagement]
 
 --Quatrième besoin
-/*Le DB administrateur peut voir le profit fait selon les journée*/
+/*Le gérant peut obtinir les 10 plus anciens personne de la base de données*/
+SELECT TOP 10 Prenom + ' ' + nom AS [Nom personne], (FORMAT(DateNaissance, 'yyyy-MM-dd')) AS [Date de naissance] FROM Personnes
+ORDER BY [Date de naissance]
+
 
 --Cinquième besoin
 /*Le gérant peut changer le taux d'horaire d'un employee*/
