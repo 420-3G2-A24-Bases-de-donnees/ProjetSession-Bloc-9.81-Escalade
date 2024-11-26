@@ -7,7 +7,7 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Password'
 ALTER TABLE Clients
 ALTER COLUMN NumeroCarteBancaire VARBINARY(256)
 
-CREATE ASYMMETRIC KEY ClientKEK WITH ALGORITHM = RSA_2048
+CREATE ASYMMETRIC KEY ClientKEK WITH ALGORITHM = RSA_4096
 
 CREATE SYMMETRIC KEY ClientKey WITH ALGORITHM = AES_256
 ENCRYPTION BY ASYMMETRIC KEY ClientKEK
@@ -24,6 +24,7 @@ CREATE ASYMMETRIC KEY TransactionKey WITH ALGORITHM = RSA_2048
 SET IDENTITY_INSERT Clients ON
 INSERT INTO Clients (ClientID, NumeroCarteBancaire)
 VALUES (1, EncryptByKey(Key_GUID('ClientKey'), '5678901234567890', 1, 'Nom'))
+SET IDENTITY_INSERT Clients OFF
 
 UPDATE Transactions
 SET MontantTransaction = ENCRYPTBYASYMKEY(ASYMKEY_ID('TransactionKey'), MontantTransaction)
@@ -38,9 +39,11 @@ SELECT DateTransaction, CONVERT(decimal, DECRYPTBYASYMKEY(ASYMKEY_ID('Transactio
 OPEN SYMMETRIC KEY ClientKey
 DECRYPTION BY ASYMMETRIC KEY ClientKeK
 
-SELECT ClientID, CONVERT(varbinary(16), DecryptByKey(NumeroCarteBancaire, 1, 'Nom'))
+SELECT ClientID, CONVERT(varchar(256), DecryptByKey(NumeroCarteBancaire, 1, 'Nom'))
 AS NumeroCarteBancaire
 FROM Clients
 
 
 SELECT * FROM Clients
+
+EXEC sp_help 'Clients';

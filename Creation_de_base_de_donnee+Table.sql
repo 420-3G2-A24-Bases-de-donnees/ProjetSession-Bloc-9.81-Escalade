@@ -84,10 +84,10 @@ DROP TABLE IF EXISTS Clients
 CREATE TABLE Clients(
 	--Création des colonnes
 	ClientID int IDENTITY (1,1) NOT NULL,
-	PersonneID int NOT NULL,
+	PersonneID int NULL,
 	ClientEstActif bit NULL DEFAULT 1,
-	NumeroCarteBancaire varbinary(16) NOT NULL,
-	Email nvarchar(50) NOT NULL,
+	NumeroCarteBancaire nvarchar(16) NOT NULL,
+	Email nvarchar(50) NULL,
 	ParcoursEnCours int NULL,
 	--Création de la clé primaire
 	CONSTRAINT "PK_Clients"
