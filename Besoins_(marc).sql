@@ -1,8 +1,11 @@
 -- Premier besoin
 /*Les employées peuvent installer/désinstaller des parcours*/
 
---Deuxième besoin
-/*Le gérant peut obtenir les profits du centre (VUE)*/ 
+
+--Deuxième besoin (Fonction ET Vue)
+/*Le gérant peut obtenir les profits du centre*/ 
+
+CREATE OR ALTER FUNCTION fnCalculer les 
 
 -- Troisième besoin
 /*Les ressources humaines peuvent créer des payes*/

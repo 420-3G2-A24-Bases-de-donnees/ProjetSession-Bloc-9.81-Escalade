@@ -37,7 +37,7 @@ CREATE TABLE Employees(
 	PersonneID int NOT NULL,
 	DateEngagement datetime2 NULL,
 	TauxHoraire decimal NULL,
-	NumeroCompteBancaire nvarchar(20) NULL,
+	NumeroCompteBancaire varbinary(256),
 
 	CONSTRAINT "PK_Employees"
 		PRIMARY KEY CLUSTERED ("EmployeeID"),
@@ -49,8 +49,10 @@ CREATE TABLE Employees(
 	CONSTRAINT "CK_DateEngagement"
 		CHECK (DateEngagement BETWEEN '2019-10-07' AND GETDATE()),
 
-	CONSTRAINT "CK_NumeroCompteBancaire"  
-		CHECK (NumeroCompteBancaire LIKE '[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]')
+
+--		à mettre dans une procedure stockée
+	--CONSTRAINT "CK_NumeroCompteBancaire"  
+	--	CHECK (NumeroCompteBancaire LIKE '[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]')
 )
 
 --5
