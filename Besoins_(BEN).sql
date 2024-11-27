@@ -11,12 +11,14 @@ ON Clients.PersonneID = Personnes.PersonneID
 WHERE ClientEstActif = 0
 
 --Deuxième besoin
-/* L'employer peut afficher les infos des parcours installer*/
+/* L'employer peut afficher les infos des parcours installer (VUES)*/
 -- Changer les NULL pour zero
-
-SELECT NomDuParcours, NiveauDifficulte, TypeDeParcours FROM Parcours
-WHERE EstInstalle = 1
-ORDER BY NiveauDifficulte
+CREATE OR ALTER VIEW InfoParcoursActif
+AS
+	SELECT NiveauDifficulte AS [Niveau de difficulté], NomDuParcours AS [Nom du parcours], TypeDeParcours AS [Type du parcours] FROM Parcours
+	WHERE EstInstalle = 1
+	ORDER BY NiveauDifficulte DESC
+GO
 
 
 --Troisième besoin
@@ -32,6 +34,6 @@ ORDER BY [Date de naissance]
 
 
 --Cinquième besoin
-/*Le gérant peut changer le taux d'horaire d'un employee*/
+/*Les employers */
 
 

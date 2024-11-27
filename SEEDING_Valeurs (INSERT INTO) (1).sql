@@ -186,7 +186,7 @@ VALUES
 
 SELECT * FROM Employees
 
--- INSERTION des données dans Employees (81 employees)
+ --INSERTION des données dans Employees (81 employees)
 INSERT INTO Employees (PersonneID, DateEngagement, TauxHoraire, NumeroCompteBancaire)
 VALUES
 (99, '2020-04-09', 19.50, 52756-07-21214), 
@@ -274,7 +274,7 @@ VALUES
 
 
 
--- INSERTION Dans Transactions (398 Transactions)
+ --INSERTION Dans Transactions (398 Transactions)
 INSERT INTO Transactions (MontantTransaction, DateTransaction) VALUES
 (150.75, '2023-11-19 14:30:00'), 
 (220.50, '2024-11-18 09:00:00'), 
@@ -601,7 +601,7 @@ INSERT INTO Transactions (MontantTransaction, DateTransaction) VALUES
 (190.00, '2024-10-20 16:10:00');
 
 
--- INSERTION Dans Parcours (99 Parcours)
+ --INSERTION Dans Parcours (99 Parcours)
 INSERT INTO Parcours (NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
 VALUES 
 ('La Vallée de la Mort', 3, 'Bouldering', 1),
@@ -609,47 +609,47 @@ VALUES
 ('L''Ascension du Titan', 2, 'Crimp', 1),
 ('Le Mur du Faucon', 4, 'Stab', 1),
 ('La Fissure du Dragon', 6, 'Dynamique', 1),
-('Lééil du Cyclone', NULL, 'Statique', 0),
+('Lééil du Cyclone', 0, 'Statique', 0),
 ('Les Griffes du Prédateur', 1, 'Bouldering', 1),
 ('La Route de léEnfer', 4, 'Stab', 1),
 ('Le Céur de la Tempéte', 2, 'Crimp', 1),
 ('LéAntre de la Béte', 5, 'Dino', 0),
 ('La Grotte du Crocodile', 3, 'Bouldering', 1),
-('La Cascade des Ombres', NULL, 'Statique', 1),
+('La Cascade des Ombres', 8, 'Statique', 1),
 ('Le Passage des éléphants', 6, 'Dynamique', 0),
 ('LéEmpire des Glaces', 1, 'Crimp', 1),
 ('L''Escalade des Anciens', 4, 'Dino', 1),
 ('La Crevasse des Titans', 2, 'Bouldering', 1),
-('Le Pic des Démons', NULL, 'Stab', 0),
+('Le Pic des Démons', 9, 'Stab', 0),
 ('La Montée de la Manticore', 3, 'Dynamique', 1),
 ('Le Trou du Serpent', 5, 'Statique', 1),
 ('Le Chemin du Vautour', 1, 'Crimp', 1),
 ('La Forét Maudite', 6, 'Stab', 0),
 ('Le Voyage du Phoenix', 4, 'Dino', 1),
 ('L''Ascension de l''Ombre', 3, 'Bouldering', 1),
-('Le Rocher du Léviathan', NULL, 'Dynamique', 1),
+('Le Rocher du Léviathan', 7, 'Dynamique', 1),
 ('Le Saut du Scorpion', 2, 'Statique', 1),
 ('La Montée du Volcan', 5, 'Bouldering', 1),
-('Le Mur des émes Perdues', NULL, 'Dino', 1),
+('Le Mur des émes Perdues', 0, 'Dino', 1),
 ('Le Pic des Tempétes', 4, 'Crimp', 1),
 ('L''Escalade de l''Apocalypse', 6, 'Stab', 1),
 ('La Ruée vers l''Inferno', 1, 'Dynamique', 0),
 ('Le Mur de l''éclipse', 3, 'Statique', 1),
 ('Le Passage des Corbeaux', 2, 'Crimp', 1),
 ('Le Sentier des Légendes', 5, 'Bouldering', 0),
-('L''Escalier du Loup', NULL, 'Stab', 1),
+('L''Escalier du Loup', 10, 'Stab', 1),
 ('La Créte des Fantémes', 6, 'Dino', 1),
 ('La Vallée des émes', 4, 'Bouldering', 0),
 ('La Faille du Jugement', 2, 'Dynamique', 1),
 ('L''Ascension du Vortex', 1, 'Statique', 1),
 ('La Pente de l''Hydre', 5, 'Crimp', 0),
 ('Le Canyon des Ombres', 3, 'Stab', 1),
-('La Chute des étoiles', NULL, 'Bouldering', 1),
+('La Chute des étoiles', 2, 'Bouldering', 1),
 ('Le Rocher du Hurlement', 6, 'Dino', 1),
 ('L''échappée du Grizzly', 4, 'Crimp', 1),
 ('Le Mur de la Serpentine', 1, 'Dynamique', 1),
 ('Le Pic du Kraken', 5, 'Statique', 1),
-('Le Mur du Corbeau Noir', NULL, 'Bouldering', 1),
+('Le Mur du Corbeau Noir', 8, 'Bouldering', 1),
 ('Le Passage du Dragon Rouge', 3, 'Dino', 1),
 ('Le Canyon des Lamentations', 2, 'Stab', 0),
 ('La Route de la Liberté', 6, 'Bouldering', 1),
@@ -657,56 +657,56 @@ VALUES
 ('La Couronne des Dieux', 1, 'Dynamique', 1),
 ('La Pente du Golem', 5, 'Statique', 0),
 ('L''Escalade du Phénix', 3, 'Stab', 1),
-('La Crevasse Maudite', NULL, 'Dino', 0),
+('La Crevasse Maudite', 7, 'Dino', 0),
 ('La Route de l''Ombre', 6, 'Bouldering', 1),
 ('La Voie des étoiles', 4, 'Crimp', 1),
 ('La Fissure des Cauchemars', 2, 'Dynamique', 1),
 ('Le Mur du Chasseur', 1, 'Statique', 0),
 ('L''Ascension des Légendes', 5, 'Bouldering', 1),
-('Le Rocher du Dragon', NULL, 'Stab', 1),
+('Le Rocher du Dragon', 9, 'Stab', 1),
 ('La Montée de l''Immortel', 3, 'Dino', 1),
 ('La Cheminée des Vents', 6, 'Crimp', 0),
 ('Le Passage de lééclipse', 4, 'Stab', 1),
 ('Le Rocher de la Légende', 1, 'Dynamique', 1),
 ('L''Escalade du Serpent de Pierre', 5, 'Bouldering', 0),
 ('Le Mur des Titans', 3, 'Statique', 1),
-('Le Pic de la Foudre', NULL, 'Crimp', 1),
+('Le Pic de la Foudre', 11, 'Crimp', 1),
 ('Le Grimper du Spectre', 6, 'Stab', 1),
 ('La Créte de la Tempéte', 4, 'Dino', 1),
 ('Le Rocher du Sphinx', 2, 'Bouldering', 1),
 ('Le Passage des Géants', 5, 'Crimp', 1),
-('L''Ascension des Lunes', NULL, 'Dynamique', 1),
+('L''Ascension des Lunes', 12, 'Dynamique', 1),
 ('La Pente du Néant', 3, 'Statique', 1),
 ('La Forét des Solitaires', 1, 'Bouldering', 0),
 ('Le Passage du Kraken', 4, 'Stab', 1),
 ('Le Mur de la Chute de Feu', 2, 'Dino', 1),
-('La Route des Guerriers', NULL, 'Crimp', 1),
+('La Route des Guerriers', 5, 'Crimp', 1),
 ('L''Escalade du Requin', 6, 'Stab', 1),
 ('Le Rocher de léEnfer', 5, 'Dynamique', 1),
 ('Le Sentier des Ombres', 3, 'Bouldering', 1),
 ('Le Chemin de l''étoile du Matin', 1, 'Statique', 1),
 ('L''Ascension des Tempétes', 4, 'Crimp', 1),
-('La Montée des émes', NULL, 'Dino', 0),
+('La Montée des émes', 7, 'Dino', 0),
 ('La Forét de Fer', 6, 'Bouldering', 1),
 ('Le Rocher du Fantéme', 2, 'Stab', 1),
 ('Le Mur des Vents', 5, 'Dynamique', 1),
 ('L''Ascension de l''Inconnu', 3, 'Crimp', 1),
 ('La Vallée des Ombres', 1, 'Statique', 1),
 ('Le Rocher de l''éternité', 4, 'Bouldering', 1),
-('L''Escalade du Vieux Sage', NULL, 'Dino', 1),
+('L''Escalade du Vieux Sage', 6, 'Dino', 1),
 ('Le Passage de l''Aigle', 2, 'Stab', 1),
 ('Le Mont des Démons', 6, 'Crimp', 0),
 ('La Route du Ciel Infini', 5, 'Dynamique', 1),
 ('La Créte de léOubli', 3, 'Bouldering', 1),
 ('Le Mur des Cieux', 1, 'Statique', 1),
-('La Faille des Réves', NULL, 'Stab', 0),
+('La Faille des Réves', 0, 'Stab', 0),
 ('La Créte des Ombres Silencieuses', 6, 'Dino', 1),
 ('Le Chemin des Anciens', 4, 'Crimp', 1),
 ('Le Mur des Enfers', 2, 'Bouldering', 1),
 ('Le Passage des Dragons Volants', 5, 'Stab', 1);
 
 
--- INSERTION Dans Clients (98)
+ --INSERTION Dans Clients (98)
 
 INSERT INTO Clients (PersonneID, ClientEstActif, NumeroCarteBancaire, Email, ParcoursEnCours)
 VALUES
@@ -812,7 +812,7 @@ VALUES
 
 
 
--- INSERTION Dans Visites (199 visites)
+ --INSERTION Dans Visites (199 visites)
 
 INSERT INTO Visites (ClientID, HeureEntree, HeureSortie, TransactionID)
 VALUES
@@ -1018,7 +1018,7 @@ VALUES
 (46, '2021-05-17 13:40:30', '2021-05-17 15:50:10', 200);
 
 
--- INSERTION Dans Payes (199 Payes)
+ --INSERTION Dans Payes (199 Payes)
 INSERT INTO Payes (TransactionID, EmployeeID) 
 VALUES
 (201, 1),
