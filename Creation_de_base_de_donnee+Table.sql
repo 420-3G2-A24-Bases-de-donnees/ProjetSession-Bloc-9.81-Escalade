@@ -44,7 +44,8 @@ CREATE TABLE Employees(
 
 	CONSTRAINT "FK_Employees_Personnes"
 		FOREIGN KEY ("PersonneID")
-		REFERENCES "dbo"."Personnes" ("PersonneID"),
+		REFERENCES "dbo"."Personnes" ("PersonneID")
+		ON DELETE CASCADE,
 
 	CONSTRAINT "CK_DateEngagement"
 		CHECK (DateEngagement BETWEEN '2019-10-07' AND GETDATE()),
@@ -95,10 +96,12 @@ CREATE TABLE Clients(
 	--Création des clés étrangère
 	CONSTRAINT "FK_Clients_Parcours"
 		FOREIGN KEY ("ParcoursEnCours")
-		REFERENCES "dbo"."Parcours" ("ParcoursID"),
+		REFERENCES "dbo"."Parcours" ("ParcoursID")
+		ON DELETE SET NULL,
 	CONSTRAINT "FK_Clients_Personnes"
 		FOREIGN KEY ("PersonneID")
-		REFERENCES "dbo"."Personnes" ("PersonneID"),
+		REFERENCES "dbo"."Personnes" ("PersonneID")
+		ON DELETE CASCADE,
 	--Vérification pour que l'addresse courriel soit valide
 	CONSTRAINT "CK_Email"
 		CHECK (Email LIKE '[a-Z0-9-_.]%@[a-Z0-9-_]%.[a-Z]%')
@@ -128,18 +131,20 @@ CREATE TABLE Payes(
 	TransactionID int NOT NULL,
 	
 	-- POBAblement qu'il faudrait mettre UNIQUE sur le transactionID
-	EmployeeID int NOT NULL,
+	EmployeeID int NULL,
 
 	CONSTRAINT "PK_Payes"
 		PRIMARY KEY CLUSTERED ("PayeID"),
 
 	CONSTRAINT "FK_Payes_Transactions"
 		FOREIGN KEY ("TransactionID")
-		REFERENCES "dbo"."Transactions" ("TransactionID"),
+		REFERENCES "dbo"."Transactions" ("TransactionID")
+		ON DELETE CASCADE,
 
 	CONSTRAINT "FK_Payes_Employees"
 		FOREIGN KEY ("EmployeeID")
-		REFERENCES "dbo"."Employees" ("EmployeeID"),
+		REFERENCES "dbo"."Employees" ("EmployeeID")
+		ON DELETE SET NULL,
 )
 
 --9
@@ -148,7 +153,7 @@ DROP TABLE IF EXISTS Visites
 
 CREATE TABLE Visites(
 	VisiteID int IDENTITY(1,1) NOT NULL,
-	ClientID int NOT NULL,
+	ClientID int NULL,
 	HeureEntree datetime2 NOT NULL,
 	HeureSortie datetime2 NOT NULL,
 	TransactionID int NOT NULL,
@@ -158,9 +163,12 @@ CREATE TABLE Visites(
 
 	CONSTRAINT "FK_Visites_Clients"
 		FOREIGN KEY ("ClientID")
-		REFERENCES "dbo"."Clients" ("ClientID"),
+		REFERENCES "dbo"."Clients" ("ClientID")
+		-- SET NULL OU CASCADE???
+		ON DELETE SET NULL,
 
 	CONSTRAINT "FK_Visites_Transactions"
 		FOREIGN KEY ("TransactionID")
-		REFERENCES "dbo"."Transactions" ("TransactionID"),
+		REFERENCES "dbo"."Transactions" ("TransactionID")
+		ON DELETE CASCADE,
 )
