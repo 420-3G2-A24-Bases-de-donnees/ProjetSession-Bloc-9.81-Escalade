@@ -12,12 +12,18 @@ WHERE ClientEstActif = 0
 
 --Deuxième besoin
 /* L'employer peut afficher les infos des parcours installer (VUES)*/
--- Changer les NULL pour zero
 CREATE OR ALTER VIEW InfoParcoursActif
 AS
-	SELECT NiveauDifficulte AS [Niveau de difficulté], NomDuParcours AS [Nom du parcours], TypeDeParcours AS [Type du parcours] FROM Parcours
-	WHERE EstInstalle = 1
-	ORDER BY NiveauDifficulte DESC
+SELECT 
+    NiveauDifficulte AS [Niveau de difficulté], 
+    NomDuParcours AS [Nom du parcours], 
+    TypeDeParcours AS [Type du parcours], 
+    CASE 
+        WHEN EstInstalle = 1 THEN 'oui'
+        ELSE 'non'
+    END AS [Le parcours est installé]
+FROM 
+    Parcours;
 GO
 
 
@@ -34,6 +40,17 @@ ORDER BY [Date de naissance]
 
 
 --Cinquième besoin
-/*Les employers */
-
+/*Les employers peuvent savoir le nombre de temps que les clients reste (Vues) */
+CREATE OR ALTER VIEW TempsVisiteClient
+AS
+SELECT 
+	FORMAT(HeureEntree, 'd', 'fr_CA') AS [Journée de la visite],
+	(DATEDIFF(MINUTE, HeureEntree, HeureSortie))/60.0 AS [Nombre d'heure rester],
+	Prenom + ' ' + nom AS [Nom du client]
+FROM Visites 
+INNER JOIN Clients
+	ON Visites.ClientID = Clients.ClientID
+INNER JOIN Personnes
+	ON Clients.PersonneId = Personnes.PersonneID
+GO
 
