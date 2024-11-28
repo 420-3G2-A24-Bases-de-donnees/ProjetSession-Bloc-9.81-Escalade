@@ -2,13 +2,30 @@
    - Déclencheur
    - Déclenché quand un parcours devient non installé (EstInstalle=0), il l'enlève aux client qui avaient ce parcours en cours.
 */
+	GO
+	CREATE TRIGGER MettreParcoursEnCoursClientNULL
+	ON Parcours AFTER UPDATE
+	AS
+	BEGIN
+		UPDATE Clients
+		SET ParcoursEnCours = NULL
+		WHERE ParcoursEnCours IN ( 
+			SELECT ParcoursID 
+			FROM inserted 
+			WHERE inserted.EstInstalle = 0
+		);
+	END
+	GO
 
-
+	UPDATE Parcours
+	SET EstInstalle = 0
+	WHERE ParcoursID = 8 
 
 /* 2ème traitement automatisé 
    - Fonction
-   - Une fonction qui permet de formatter une chaine de caractères avec une majuscule au début et le reste en minuscule.
+   - Une fonction qui permet de formater une chaine de caractères avec une majuscule au début et le reste en minuscule.
 */
+	GO
 	CREATE OR ALTER FUNCTION Capitaliser(@chaine nvarchar(256))
 	RETURNS nvarchar(256)
 	AS
@@ -17,19 +34,23 @@
 			RETURN @chaine;
 		RETURN CONCAT(UPPER(LEFT(@chaine, 1)), LOWER(SUBSTRING(@chaine, 2, LEN(@chaine) - 1)));
 	END;
+	GO
+
+	SELECT dbo.Capitaliser('aLlO') AS [Chaine formaté]
 
 
 /* 3ème traitement automatisé 
    - Fonction
    - Une fonction qui permet de calculer le montant total de payes des employées par mois pour l'année donnée en paramètre sinon par défaut l'année actuelle.
 */
-	CREATE OR ALTER FUNCTION fnCalculerPayesMensuelsDeAnnee(@Annee int = null)
+	GO
+	CREATE OR ALTER FUNCTION fnCalculerPayesMensuelsDeAnnee(@Annee int = 0)
 	RETURNS @PayesMensuel TABLE (Mois nvarchar(20), Payes decimal)
 	AS
 	BEGIN;
-		IF @Annee = null
+		IF @Annee = 0
 		BEGIN 
-			SET @Annee = YEAR(GETDATE())
+			SET @Annee = DATEPART(YEAR, GETDATE())
 		END
 		INSERT INTO @PayesMensuel (Mois, Payes)
 		SELECT 
@@ -54,17 +75,21 @@
 		END
 		RETURN
 	END;
+	Go
 
-/* 3ème traitement automatisé 
+	SELECT Mois, Payes AS [Payes ($)] FROM fnCalculerPayesMensuelsDeAnnee(0)
+	SELECT Mois, Payes AS [Payes ($)] FROM fnCalculerPayesMensuelsDeAnnee(2023)
+
+/* 4ème traitement automatisé 
    - Fonction
-   - Une fonction qui permet de calculer le montant total des revenu par mois pour l'année donnée en paramètre sinon par défaut l'année actuelle.
+   - Une fonction qui permet de calculer le montant total des revenu brut par mois pour l'année donnée en paramètre sinon par défaut l'année actuelle.
 */
-
-	CREATE OR ALTER FUNCTION fnCalculerRevenuBrutMensuelsDeAnnee(@Annee int=null)
+	GO
+	CREATE OR ALTER FUNCTION fnCalculerRevenuBrutMensuelsDeAnnee(@Annee int = 0)
 	RETURNS @RevenuBrutMensuelsDeAnnee TABLE (Mois nvarchar(20), RevenuBrut decimal)
 	AS
 	BEGIN;
-		IF @Annee = null
+		IF @Annee = 0
 		BEGIN
 			SET @Annee = YEAR(GETDATE())
 		END
@@ -91,3 +116,7 @@
 		END
 		RETURN
 	END;
+	GO
+
+	SELECT Mois, RevenuBrut AS [RevenuBrut ($)] FROM fnCalculerRevenuBrutMensuelsDeAnnee(0)
+	SELECT Mois, RevenuBrut AS [RevenuBrut ($)] FROM fnCalculerRevenuBrutMensuelsDeAnnee(2023)

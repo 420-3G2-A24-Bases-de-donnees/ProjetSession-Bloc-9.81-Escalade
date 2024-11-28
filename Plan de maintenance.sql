@@ -4,6 +4,8 @@ RTO = 1 jour MAX
 RPO = 1 jour MAX
 Stratégie =  
 	- Copies de sauvegarde complètes au 7 jours 
+	- Copies de sauvegarde différentielle par jour
+	- Journaux de transactions aux 30 minutes (le jour sinon 1 fois la nuit)
 
 
 */
