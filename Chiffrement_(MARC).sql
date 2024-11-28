@@ -20,8 +20,6 @@ ENCRYPTION BY PASSWORD = 'UnAutrePasswordSecurise'
 
 
 
-
-
 GO
 ALTER TABLE Employees
 ALTER COLUMN NumeroCompteBancaire VARBINARY(256)
@@ -33,12 +31,15 @@ ENCRYPTION BY ASYMMETRIC KEY NumeroCompteBancaireKEK;
 
 OPEN SYMMETRIC KEY NumeroCompteBancaireKey
 DECRYPTION BY ASYMMETRIC KEY NumeroCompteBancaireKEK
-
 SET IDENTITY_INSERT Employees ON
-INSERT INTO Employees (EmployeeID, NumeroCompteBancaire)
-VALUES (1, EncryptByKey(Key_GUID('NumeroCompteBancaireKey'), '12342-78-23332', 1, 'DateEngagement'))
+INSERT INTO Employees (EmployeeID, PersonneID, NumeroCompteBancaire)
+VALUES (991, 1, EncryptByKey(Key_GUID('NumeroCompteBancaireKey'), '12342-78-23332', 1, 'DateEngagement'))
 
 
-SELECT CONVERT(varchar(100), DecryptByAsymKey(AsymKey_ID('NumeroCompteBancaireKey'), NumeroCompteBancaire))
+OPEN SYMMETRIC KEY NumeroCompteBancaireKey
+DECRYPTION BY ASYMMETRIC KEY NumeroCompteBancaireKEK
+SELECT CONVERT(varchar(100), DecryptByKey(NumeroCompteBancaire, 1, 'DateEngagement'))
 AS NumeroCompteBancaire
 FROM Employees
+
+CREATE OR ALTER
