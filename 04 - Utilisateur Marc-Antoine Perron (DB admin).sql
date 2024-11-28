@@ -1,6 +1,6 @@
 --D.B. admin
 USE [Bloc_9.81]
-CREATE USER [Marc-Antoine Perron] FOR LOGIN [Bloc9.81];
+CREATE USER [Marc-Antoine Perron] FOR LOGIN DBAdmin;
 
 use [Bloc_9.81]
 GO
@@ -170,5 +170,3 @@ use [Bloc_9.81]
 GO
 DENY DELETE ON [dbo].[Parcours] TO [Marc-Antoine Perron]
 GO
-
-DROP USER [Marc-Antoine Perron]

@@ -6,10 +6,10 @@ GO
 */
 	GO
 	CREATE OR ALTER FUNCTION GetNBDeParcourUtiliser()
-		RETURNS @ParcoursUtiliser TABLE ([Parcours en cours] int, [Nombre de clients] int)
+		RETURNS @ParcoursUtilisé TABLE ([Parcours en cours] int, [Nombre de clients] int)
 	AS
 	BEGIN
-		INSERT INTO @ParcoursUtiliser([Parcours en cours], [Nombre de clients])
+		INSERT INTO @ParcoursUtilisé([Parcours en cours], [Nombre de clients])
 		SELECT
 			ParcoursEnCours, 
 			COUNT(*) 
@@ -20,10 +20,11 @@ GO
 			GROUP BY ParcoursEnCours
 		RETURN
 	END
+	GO
 
 	SELECT * FROM GetNBDeParcourUtiliser()
 /*2e traitement automatique (Déclancheur)
---Lorsque qu'un employer installer un nouveaux parcours il est directement installer sur le murs (EstInstaller = 1) et renvoit un message d'erreur si le max est atteint
+--Lorsque qu'un employer installe un nouveau parcours il est directement installer sur le murs (EstInstaller = 1) ou renvoit un message d'erreur si le max est atteint
 */
 	GO
 	CREATE TRIGGER LimiteParcours
@@ -31,7 +32,7 @@ GO
 	INSTEAD OF INSERT
 	AS
 	BEGIN
-		IF (SELECT COUNT(*) FROM Parcours WHERE EstInstalle = 1) < 50
+		IF (SELECT COUNT(*) FROM Parcours WHERE EstInstalle = 1) <= 50
 			BEGIN
 			INSERT INTO  Parcours(ParcoursID, NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
 			SELECT
@@ -49,28 +50,24 @@ GO
 	VALUES
 	('Jurassic Parc', 7, 'Dino', 1)
 
-	DELETE FROM Parcours
 
-
-/*3e traitement automatique (Procèdure sctoké)
---Permet à un employer de désintaller un ancient parcours (EstInstaller = 0)
+/*3e traitement automatique (Procèdure stockée)
+--Permet à un employée de désintaller un ancient parcours (EstInstaller = 0)
 */
 
 	GO
 	CREATE PROCEDURE DesintallerParcours
 	(
-		@ParcoursID int,
-		@EstInstalle bit
+		@ParcoursID int
 	)
 	AS
 	BEGIN
-		IF @EstInstalle = 1
+		IF @ParcoursID != NULL
 			UPDATE Parcours
 			SET EstInstalle = 0
 			WHERE ParcoursID = @ParcoursID
-			PRINT('Désintallation au mur du parcours demandé.')
+			PRINT('Parcours désinstallé !')
 		END
 
 	EXEC DesintallerParcours
-		@ParcoursID = 0,
-		@EstInstalle = 1
+		@ParcoursID = 0

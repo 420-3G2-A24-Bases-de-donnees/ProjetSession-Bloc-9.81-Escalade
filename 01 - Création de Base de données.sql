@@ -1,5 +1,9 @@
 USE Master
-CREATE LOGIN [Bloc9.81] WITH PASSWORD = 'blocmotdepasse';
+CREATE LOGIN Gerant WITH PASSWORD = 'Lk8Jy2!';
+CREATE LOGIN Employees WITH PASSWORD = 'JgtsGs2!';
+CREATE LOGIN RH WITH PASSWORD = 'Ok4A2da!';
+CREATE LOGIN DBAdmin WITH PASSWORD = 'GKiksjI1$';
+
 
 --Création de la base de donnée "Bloc_9.81"
 GO
@@ -52,6 +56,11 @@ CREATE TABLE Employees(
 
 	CONSTRAINT "CK_DateEngagement"
 		CHECK (DateEngagement BETWEEN '2019-10-07' AND GETDATE()),
+
+
+--		à mettre dans une procedure stockée
+	--CONSTRAINT "CK_NumeroCompteBancaire"  
+	--	CHECK (NumeroCompteBancaire LIKE '[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]')
 )
 
 --5
@@ -71,6 +80,7 @@ CREATE TABLE Parcours(
 	--Création de la clé primaire
 	CONSTRAINT "PK_Parcours"
 		PRIMARY KEY CLUSTERED ("ParcoursID")
+	--Validation pour que le niveau de difficulte ne soit pas négatiff ???
 )
 
 --6
@@ -161,6 +171,7 @@ CREATE TABLE Visites(
 	CONSTRAINT "FK_Visites_Clients"
 		FOREIGN KEY ("ClientID")
 		REFERENCES "dbo"."Clients" ("ClientID")
+		-- SET NULL OU CASCADE???
 		ON DELETE SET NULL,
 
 	CONSTRAINT "FK_Visites_Transactions"

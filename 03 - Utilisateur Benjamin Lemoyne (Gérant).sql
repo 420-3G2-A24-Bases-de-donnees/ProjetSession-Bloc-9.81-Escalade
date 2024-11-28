@@ -1,6 +1,6 @@
 --Gérant
 USE [Bloc_9.81]
-CREATE USER [Benjamin Lemoyne] FOR LOGIN [Bloc9.81];
+CREATE USER [Benjamin Lemoyne] FOR LOGIN Gerant;
 
 use [Bloc_9.81]
 GO
@@ -115,4 +115,3 @@ GO
 DENY DELETE ON [dbo].[Visites] TO [Benjamin Lemoyne]
 GO
 
-DROP USER [Benjamin Lemoyne]

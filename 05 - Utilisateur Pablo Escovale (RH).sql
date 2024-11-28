@@ -1,6 +1,6 @@
 --RH
 USE [Bloc_9.81]
-CREATE USER [Pablo Escovale] FOR LOGIN [Bloc9.81];
+CREATE USER [Pablo Escovale] FOR LOGIN RH;
 
 use [Bloc_9.81]
 GO
@@ -114,5 +114,3 @@ use [Bloc_9.81]
 GO
 DENY DELETE ON [dbo].[Visites] TO [Pablo Escovale]
 GO
-
-DROP USER [Pablo Escovale]
