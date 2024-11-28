@@ -1,47 +1,51 @@
+# ProjetSession-Bloc-9.81-Escalade
+Projet de session - Sujet : Gestion du centre d'escalade *Bloc 9.81*
+
+
 # Gestion du Bloc 9.81 (Centre d'Escalade)
-Exécuter les fichiers dans l'ordre indiqué. Ex : Executer en premier ```01 - Création de Base de données```
 
 ## Tables et Structures de Données
-### **Clients**
-  - ClientID
-  - PersonneID
+
+### 1. **Clients**
+  - ID
+  - IDPersonne
   - ClientEstActif
-  - **NumeroCarteBancaire** (Sensible)
+  - **NumeroCarteBancaire**
   - Email
-  - ParcoursEnCours
+  - IDParcoursEnCours
 
 ### 2. **Personnes**
-  - PersonneID
+  - ID
   - Nom
   - Prenom
   - DateNaissance
 
 ### 3. **Employees**
-  - EmployeeID
-  - PersonneID
+  - ID
+  - IDPersonne
   - DateEngagement
   - TauxHoraire
-  - **NumeroCompteBancaire** (Sensible)
+  - **NumeroCompteBancaire**
 
 ### 4. **Payes**
-  - PayeID
-  - TransactionID
+  - ID
+  - IDTransaction
   - EmployeeID
 
 ### 5. **Transactions**
-  - TransactionID
-  - **MontantTransaction** (Sensible)
+  - ID
+  - **MontantTransaction**
   - DateTransaction
 
 ### 6. **Visites**
-  - VisiteID
-  - ClientID
+  - ID
+  - IDClient
   - HeureEntree
   - HeureSortie
-  - TransactionID
+  - IDTransaction
 
 ### 7. **Parcours**
-  - ParcoursID
+  - ID
   - NomDuParcours
   - NiveauDifficulte
   - TypeDeParcours
@@ -53,29 +57,12 @@ Exécuter les fichiers dans l'ordre indiqué. Ex : Executer en premier ```01 - C
 ---
 
 ## Division des Tâches
-### **Ben**
-   - Clients
-   - Personnes
-   - Transactions
-   - Parcours 
-### **Marc**
-   - Employees
-   - Payes
-   - Visites
-
+- **Ben**  
+- **Marc**
 
 ---
 ## PLAN DE MAINTENANCE
 ![image](https://github.com/user-attachments/assets/800efccd-2f3d-4656-99a3-4532360be8b0)
-- Mode de récupération = Complet
-- RTO = 1 jour MAX
-- RPO = 1 jour MAX
-- Stratégie =  
-	- Copies de sauvegarde complètes au 7 jours 
-	- Copies de sauvegarde différentielle par jour
-	- Journaux de transactions aux 30 minutes (Le jour)
-
-
 
 ## Groupes de Personnes et Privilèges pour Chaque Table
 
