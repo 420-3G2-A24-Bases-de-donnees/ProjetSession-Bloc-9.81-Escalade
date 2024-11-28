@@ -31,7 +31,7 @@ GO
 	INSTEAD OF INSERT
 	AS
 	BEGIN
-		IF (SELECT COUNT(*) FROM Parcours WHERE EstInstalle = 1) <= 50
+		IF (SELECT COUNT(*) FROM Parcours WHERE EstInstalle = 1) < 50
 			BEGIN
 			INSERT INTO  Parcours(ParcoursID, NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
 			SELECT
@@ -48,6 +48,8 @@ GO
 	INSERT INTO Parcours (NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
 	VALUES
 	('Jurassic Parc', 7, 'Dino', 1)
+
+	DELETE FROM Parcours
 
 
 /*3e traitement automatique (Procèdure sctoké)
