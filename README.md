@@ -63,6 +63,15 @@ Projet de session - Sujet : Gestion du centre d'escalade *Bloc 9.81*
 ---
 ## PLAN DE MAINTENANCE
 ![image](https://github.com/user-attachments/assets/800efccd-2f3d-4656-99a3-4532360be8b0)
+Mode de récupération = Complet
+RTO = 1 jour MAX
+RPO = 1 jour MAX
+Stratégie =  
+	- Copies de sauvegarde complètes au 7 jours 
+	- Copies de sauvegarde différentielle par jour
+	- Journaux de transactions aux 30 minutes (Le jour)
+
+
 
 ## Groupes de Personnes et Privilèges pour Chaque Table
 
