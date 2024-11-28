@@ -184,8 +184,6 @@ VALUES
 ('Marchand', 'Thierry', '1992-03-04'),
 ('Dubois', 'Marion', '1994-04-09');         
 
-SELECT * FROM Employees
-
  --INSERTION des données dans Employees (81 employees)
 INSERT INTO Employees (PersonneID, DateEngagement, TauxHoraire, NumeroCompteBancaire)
 VALUES
@@ -611,13 +609,13 @@ VALUES
 ('Le Mur du Faucon', 4, 'Stab', 1),
 ('La Fissure du Dragon', 6, 'Dynamique', 1),
 ('Lééil du Cyclone', 0, 'Statique', 0),
-('Les Griffes du Prédateur', 1, 'Bouldering', 0),
+('Les Griffes du Prédateur', 1, 'Bouldering', 1),
 ('La Route de léEnfer', 4, 'Stab', 1),
 ('Le Céur de la Tempéte', 2, 'Crimp', 1),
 ('LéAntre de la Béte', 5, 'Dino', 0),
 ('La Grotte du Crocodile', 3, 'Bouldering', 1),
 ('La Cascade des Ombres', 8, 'Statique', 1),
-('Le Passage des éléphants', 6, 'Dynamique', 0),
+('Le Passage des éléphants', 6, 'Dynamique', 1),
 ('LéEmpire des Glaces', 1, 'Crimp', 0),
 ('L''Escalade des Anciens', 4, 'Dino', 1),
 ('La Crevasse des Titans', 2, 'Bouldering', 0),
@@ -634,10 +632,10 @@ VALUES
 ('Le Mur des émes Perdues', 0, 'Dino', 1),
 ('Le Pic des Tempétes', 4, 'Crimp', 1),
 ('L''Escalade de l''Apocalypse', 6, 'Stab', 0),
-('La Ruée vers l''Inferno', 1, 'Dynamique', 0),
+('La Ruée vers l''Inferno', 1, 'Dynamique', 1),
 ('Le Mur de l''éclipse', 3, 'Statique', 1),
 ('Le Passage des Corbeaux', 2, 'Crimp', 0),
-('Le Sentier des Légendes', 5, 'Bouldering', 0),
+('Le Sentier des Légendes', 5, 'Bouldering', 1),
 ('L''Escalier du Loup', 10, 'Stab', 1),
 ('La Créte des Fantémes', 6, 'Dino', 1),
 ('La Vallée des émes', 4, 'Bouldering', 0),

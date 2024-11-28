@@ -51,13 +51,18 @@ GO
 	SELECT * FROM AfficherInfosDesEmployees ORDER BY [Date d'engagement]
 
 /*4e Besoin d'information
---Le gérant peut obtenir les 10 plus anciennes personne de la base de données
+--Le gérant peut obtenir la première visite de chaque clients
 */
 	SELECT 
-		TOP 10 Prenom + ' ' + nom AS [Nom personne], 
-		(FORMAT(DateNaissance, 'yyyy-MM-dd')) AS [Date de naissance] 
+		Prenom + ' ' + nom AS [Nom personne], 
+		(FORMAT(MIN(HeureEntree), 'yyyy-MM-dd')) AS [La première visite]
 	FROM Personnes
-		ORDER BY [Date de naissance]
+		INNER JOIN Clients
+			ON Personnes.PersonneID = Clients.PersonneID
+		INNER JOIN Visites
+			ON Clients.ClientID = Visites.ClientID
+		GROUP BY Prenom, Nom
+		ORDER BY [La première visite]
 
 /*5e Besoin d'information (VUE)
 --Les employées peuvent savoir le nombre de temps que le client est en visite

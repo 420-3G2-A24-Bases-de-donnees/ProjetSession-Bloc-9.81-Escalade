@@ -45,10 +45,17 @@ GO
 			END
 	END
 
+	--Celui qui marche
 	SET IDENTITY_INSERT Parcours ON
-	INSERT INTO Parcours (NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
+	INSERT INTO Parcours (ParcoursID, NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
 	VALUES
-	('Jurassic Parc', 7, 'Dino', 1)
+	(555, 'Jurassic Parc', 7, 'Dino', 1)
+
+	--Celui qui ne va pas marcher
+	SET IDENTITY_INSERT Parcours ON
+	INSERT INTO Parcours (ParcoursID, NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
+	VALUES
+	(556, 'la pause de l olympe', 12, 'Bouldering', 1)
 
 
 /*3e traitement automatique (Procèdure stockée)
