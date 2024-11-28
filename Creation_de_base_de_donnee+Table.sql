@@ -5,18 +5,25 @@ CREATE LOGIN [Bloc9.81] WITH PASSWORD = 'blocmotdepasse';
 USE [Bloc_9.81]
 CREATE USER [Gamier Héléne] FOR LOGIN [Bloc9.81];
 
+DROP USER [Gamier Héléne]
+
 --D.B. admin
 USE [Bloc_9.81]
 CREATE USER [Marc-Antoine Perron] FOR LOGIN [Bloc9.81];
+
+DROP USER [Marc-Antoine Perron]
 
 --Gérant
 USE [Bloc_9.81]
 CREATE USER [Benjamin Lemoyne] FOR LOGIN [Bloc9.81];
 
+DROP USER [Benjamin Lemoyne]
+
 --RH
 USE [Bloc_9.81]
 CREATE USER [Pablo Escovale] FOR LOGIN [Bloc9.81];
 
+DROP USER [Pablo Escovale]
 
 
 --Création de la base de donnée "Bloc_9.81"
