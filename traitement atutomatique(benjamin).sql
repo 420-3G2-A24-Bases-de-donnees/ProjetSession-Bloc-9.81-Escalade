@@ -4,6 +4,7 @@ GO
 /*1er traitement automatique (Fonction)
 --Les employers peuvent savoir quel parcours sont utiliser par des clients et combien l'utilise
 */
+	GO
 	CREATE OR ALTER FUNCTION GetNBDeParcourUtiliser()
 		RETURNS @ParcoursUtiliser TABLE ([Parcours en cours] int, [Nombre de clients] int)
 	AS
@@ -30,29 +31,44 @@ GO
 	INSTEAD OF INSERT
 	AS
 	BEGIN
-		IF (SELECT COUNT(ParcoursID) FROM inserted WHERE EstInstalle = 1) > 50
-			PRINT('Le maximum de parcours(50) est atteint.')
-		ELSE
+		IF (SELECT COUNT(*) FROM Parcours WHERE EstInstalle = 1) <= 50
+			BEGIN
 			INSERT INTO  Parcours(ParcoursID, NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
 			SELECT
 				ParcoursID, NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle 
 			FROM inserted
+			END
+		ELSE
+			BEGIN
+				RAISERROR('Le maximum de parcours (50) est atteint.', 16, 1);
+			END
 	END
+
+	SET IDENTITY_INSERT Parcours ON
+	INSERT INTO Parcours (NomDuParcours, NiveauDifficulte, TypeDeParcours, EstInstalle)
+	VALUES
+	('Jurassic Parc', 7, 'Dino', 1)
+
 
 /*3e traitement automatique (Procèdure sctoké)
 --Permet à un employer de désintaller un ancient parcours (EstInstaller = 0)
 */
 
-GO
-CREATE PROCEDURE DesintallerParcours
-(
-	@ParcourID int,
-	@EstInstalle bit
-)
-AS
-BEGIN
-	IF @EstInstalle = 1
-		PRINT('Désintallation du parcours demandé.')
-		DELETE Parcours
-		WHERE ParcoursID = @ParcourID
-	END
+	GO
+	CREATE PROCEDURE DesintallerParcours
+	(
+		@ParcoursID int,
+		@EstInstalle bit
+	)
+	AS
+	BEGIN
+		IF @EstInstalle = 1
+			UPDATE Parcours
+			SET EstInstalle = 0
+			WHERE ParcoursID = @ParcoursID
+			PRINT('Désintallation au mur du parcours demandé.')
+		END
+
+	EXEC DesintallerParcours
+		@ParcoursID = 0,
+		@EstInstalle = 1
