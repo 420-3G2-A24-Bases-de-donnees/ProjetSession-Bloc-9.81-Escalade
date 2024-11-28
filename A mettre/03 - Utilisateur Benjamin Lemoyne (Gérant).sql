@@ -1,3 +1,7 @@
+--Gérant
+USE [Bloc_9.81]
+CREATE USER [Benjamin Lemoyne] FOR LOGIN [Bloc9.81];
+
 use [Bloc_9.81]
 GO
 GRANT INSERT ON [dbo].[Personnes] TO [Benjamin Lemoyne]
@@ -110,3 +114,5 @@ use [Bloc_9.81]
 GO
 DENY DELETE ON [dbo].[Visites] TO [Benjamin Lemoyne]
 GO
+
+DROP USER [Benjamin Lemoyne]

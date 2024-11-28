@@ -1,3 +1,7 @@
+--D.B. admin
+USE [Bloc_9.81]
+CREATE USER [Marc-Antoine Perron] FOR LOGIN [Bloc9.81];
+
 use [Bloc_9.81]
 GO
 GRANT CONTROL ON [dbo].[Employees] TO [Marc-Antoine Perron]
@@ -166,3 +170,5 @@ use [Bloc_9.81]
 GO
 DENY DELETE ON [dbo].[Parcours] TO [Marc-Antoine Perron]
 GO
+
+DROP USER [Marc-Antoine Perron]

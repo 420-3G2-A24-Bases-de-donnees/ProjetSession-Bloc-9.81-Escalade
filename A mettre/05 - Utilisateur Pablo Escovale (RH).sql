@@ -1,3 +1,7 @@
+--RH
+USE [Bloc_9.81]
+CREATE USER [Pablo Escovale] FOR LOGIN [Bloc9.81];
+
 use [Bloc_9.81]
 GO
 GRANT INSERT ON [dbo].[Personnes] TO [Pablo Escovale] WITH GRANT OPTION 
@@ -110,3 +114,5 @@ use [Bloc_9.81]
 GO
 DENY DELETE ON [dbo].[Visites] TO [Pablo Escovale]
 GO
+
+DROP USER [Pablo Escovale]
