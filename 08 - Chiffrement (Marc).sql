@@ -1,22 +1,6 @@
--- Voir si la Database Master Key est définie (DMK)
-SELECT name, key_algorithm, key_length
-FROM sys.symmetric_keys
-WHERE name = '##MS_DatabaseMasterKey##'
 
--- La créer
+-- Créer la clé
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'UnPasswordSecurise';
-
--- En faire une sauvegarde
-BACKUP MASTER KEY TO FILE = 'D:\data\master_key'  
-ENCRYPTION BY PASSWORD = 'UnAutrePasswordSecurise'
-
--- Voir si la service master key (SMK) est définie
-SELECT name, key_algorithm, key_length
-FROM master.sys.symmetric_keys
-
--- En faire une sauvegarde
-BACKUP SERVICE MASTER KEY TO FILE = 'D:\data\sql2022_smk'  
-ENCRYPTION BY PASSWORD = 'UnAutrePasswordSecurise'
 
 
 
@@ -41,5 +25,3 @@ DECRYPTION BY ASYMMETRIC KEY NumeroCompteBancaireKEK
 SELECT CONVERT(varchar(100), DecryptByKey(NumeroCompteBancaire, 1, 'DateEngagement'))
 AS NumeroCompteBancaire
 FROM Employees
-
-CREATE OR ALTER
