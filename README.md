@@ -2,8 +2,7 @@
 Exécuter les fichiers dans l'ordre indiqué. Ex : Executer en premier **`01 - Création de Base de données`**
 
 ## Schéma entités relations
-
-
+![schéma_entité_relation drawio](https://github.com/user-attachments/assets/24b0b00e-1b44-404e-957c-f0c9d3bffa70)
 
 
 
