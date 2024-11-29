@@ -1,5 +1,23 @@
 # Gestion du Bloc 9.81 (Centre d'Escalade)
-Exécuter les fichiers dans l'ordre indiqué. Ex : Executer en premier ```01 - Création de Base de données```
+Exécuter les fichiers dans l'ordre indiqué. Ex : Executer en premier **`01 - Création de Base de données`**
+
+## Schéma entités relations
+
+
+
+
+
+## GROUPE UTILISATEURS
+
+- **`Gerant`**
+	Mot de passe = Lk8Jy2!
+- **`Employees`**
+	Mot de passe = JgtsGs2!
+- **`RH`**
+	Mot de passe = Ok4A2da!
+- **`DBAdmin`**
+	Mot de passe = GKiksjI1$
+
 
 ## Tables et Structures de Données
 ### **Clients**
@@ -78,20 +96,4 @@ Exécuter les fichiers dans l'ordre indiqué. Ex : Executer en premier ```01 - C
 
 
 ## Groupes de Personnes et Privilèges pour Chaque Table
-
-| Table        | Employée      | D.B. admin | Gérant      | R.H. / Comptabilité |
-|--------------|---------------|------------|-------------|---------------------|
-| **Clients**  | Écriture      | Écriture   | Écriture    | AUCUN               |
-|              | Lecture       | Lecture    | Lecture     | Écriture (clients)  |
-| **Personnes**| AUCUN         | Écriture   | Écriture    | AUCUN               |
-|              | AUCUN         | Lecture    | Lecture     | Écriture (employées)|
-| **Employees**| AUCUN         | Écriture   | Écriture    | AUCUN               |
-|              | AUCUN         | Lecture    | Lecture     | Écriture (employées)|
-| **Payes**    | AUCUN         | Écriture   | Écriture    | AUCUN               |
-|              | AUCUN         | Lecture    | Lecture     | Écriture            |
-| **Transactions**| AUCUN      | Écriture   | Écriture    | Écriture            |
-|              | AUCUN         | Lecture    | Lecture     | Écriture            |
-| **Visites**  | AUCUN         | Écriture   | Écriture    | Écriture            |
-|              | AUCUN         | Lecture    | Lecture     | Écriture            |
-| **Parcours** | AUCUN         | Écriture   | Écriture    | AUCUN               |
-|              | AUCUN         | Lecture    | Lecture     | AUCUN               |
+![image](https://github.com/user-attachments/assets/4de96344-fb05-458e-b0cb-5087884c4c4d)
